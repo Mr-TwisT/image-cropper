@@ -85,6 +85,8 @@
 .upload-file-input::before {
   content: 'Upload image';
   display: inline-block;
+  font-size: 1rem;
+  line-height: 1.5rem;
   padding: 5px 8px;
   outline: none;
   white-space: nowrap;

@@ -45,7 +45,7 @@ const Upload = () => {
           type="file"
           accept="image/*"
           onChange={onLoadImage}
-          className="upload-file-input cursor-pointer ml-4"
+          className="upload-file-input cursor-pointer ml-3"
         />
       </button>
     </div>

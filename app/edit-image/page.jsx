@@ -33,7 +33,7 @@ const EditImage = () => {
           }}
         />
         <button type="button" className="black_btn">
-          <p className="text-lg">Crop Image</p>
+          <p className="text-base px-3 py-1">Crop Image</p>
         </button>
       </div>
     </section>
