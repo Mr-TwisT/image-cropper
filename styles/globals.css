@@ -65,6 +65,32 @@
   opacity: 0.15;
 }
 
+.cropper {
+  width: auto;
+  height: auto;
+  margin-top: 1rem;
+}
+
+.cropperImage {
+  background-color: '#000';
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.upload-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.upload-file-input::before {
+  content: 'Upload image';
+  display: inline-block;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 640px) {
   .main {
     padding: 0;
