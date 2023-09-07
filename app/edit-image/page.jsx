@@ -7,21 +7,32 @@ import 'react-advanced-cropper/dist/style.css';
 import Upload from '@components/Upload';
 
 const EditImage = () => {
+  const cropperRef = useRef(null);
+
+  const [isCropped, setIsCropped] = useState(false);
+  const [croppedImage, setCroppedImage] = useState(null);
   const [image, setImage] = useState(
     'https://images.unsplash.com/photo-1599140849279-1014532882fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80'
   );
 
-  const cropperRef = useRef(null);
+  const onChange = () => {
+    setIsCropped(false);
+    setCroppedImage(null);
+  };
 
-  const onChange = (cropper) => {
-    const coordinates = cropper.getCoordinates();
-    const canvas = cropper.getCanvas();
+  const onCrop = () => {
+    const coordinates = cropperRef.current?.getCoordinates();
+    const canvas = cropperRef.current?.getCanvas();
+    // const canvas = cropperRef.current?.getCanvas()?.toDataURL();   BASE64
 
-    return { coordinates, canvas };
+    if (coordinates && canvas) {
+      setIsCropped(true);
+      setCroppedImage(canvas);
+    }
   };
 
   const onSend = () => {
-    const canvas = cropperRef.current?.getCanvas();
+    const canvas = croppedImage;
 
     if (canvas) {
       const form = new FormData();
@@ -53,12 +64,18 @@ const EditImage = () => {
           }}
         />
         <div className="flex flex-row gap-2">
-          <button type="button" className="black_btn" onClick={() => {}}>
+          <button type="button" className="black_btn" onClick={() => onCrop()}>
             <p className="text-base px-3 py-1">Crop Image</p>
           </button>
-          <button type="button" className="black_btn" onClick={() => onSend()}>
-            <p className="text-base px-3 py-1">Send to Server</p>
-          </button>
+          {isCropped && (
+            <button
+              type="button"
+              className="black_btn"
+              onClick={() => onSend()}
+            >
+              <p className="text-base px-3 py-1">Send to Server</p>
+            </button>
+          )}
         </div>
       </div>
     </section>
