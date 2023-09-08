@@ -65,6 +65,14 @@
   opacity: 0.15;
 }
 
+.homepage_image {
+  mask-image: url('/assets/images/mask-2.svg');
+  mask-size: 110%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  border-radius: 10%;
+}
+
 .cropper {
   width: auto;
   height: auto;

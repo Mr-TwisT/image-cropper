@@ -14,12 +14,13 @@ const Home = () => {
         explicabo nesciunt quos pariatur quod rem asperiores, nulla fuga
         accusantium perspiciatis fugit ut deleniti! Adipisci, accusamus.
       </p>
-      <div className="my-6">
+      <div className="my-6 w-full">
         <Image
           src="/assets/images/landing.jpg"
           alt="photos collection"
           width={1000}
           height={100}
+          className="homepage_image mx-auto"
         />
       </div>
       <Link href="/edit-image" className="black_btn mb-10">
@@ -30,5 +31,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// add mask
