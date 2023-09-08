@@ -1,9 +1,10 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect, useContext } from 'react';
+import { DataContext } from '@app/edit-image/page';
 
 const Upload = () => {
   const inputRef = useRef(null);
 
-  const [image, setImage] = useState(null);
+  const { image, setImage } = useContext(DataContext);
 
   const onUpload = () => {
     if (inputRef.current) {
@@ -16,20 +17,14 @@ const Upload = () => {
 
     if (files && files[0]) {
       const blob = URL.createObjectURL(files[0]);
-
-      setImage({
-        src: blob,
-        type: files[0].type,
-      });
+      setImage(blob);
     }
     e.target.value = '';
   };
 
   useEffect(() => {
     return () => {
-      if (image && image.src) {
-        URL.revokeObjectURL(image.src);
-      }
+      if (image) URL.revokeObjectURL(image);
     };
   }, [image]);
 
