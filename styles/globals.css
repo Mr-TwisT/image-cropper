@@ -76,7 +76,6 @@
 .cropper {
   width: auto;
   height: auto;
-  margin-top: 1rem;
 }
 
 .cropperImage {
@@ -91,13 +90,13 @@
 }
 
 .upload-file-input::before {
-  content: 'Upload image';
+  content: 'Upload Image';
   display: inline-block;
   font-size: 1rem;
   line-height: 1.5rem;
-  padding: 5px 8px;
+  margin-bottom: 25px;
+  padding: 6px 12px 0 12px;
   outline: none;
-  white-space: nowrap;
   cursor: pointer;
 }
 

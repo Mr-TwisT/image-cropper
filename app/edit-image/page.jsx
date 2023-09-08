@@ -54,7 +54,7 @@ const EditImage = () => {
           Edit Image Below
         </h2>
 
-        <div className="h-screen flex flex-col gap-3 items-center mt-5">
+        <div className="h-screen flex flex-col gap-3 items-center">
           <Upload />
           <Cropper
             src={image}
@@ -72,7 +72,7 @@ const EditImage = () => {
               className="black_btn"
               onClick={() => onCrop()}
             >
-              <p className="text-base px-3 py-1">Crop Image</p>
+              <p className="text-base px-4 py-2">Crop Image</p>
             </button>
             {isCropped && (
               <button
@@ -80,7 +80,7 @@ const EditImage = () => {
                 className="black_btn"
                 onClick={() => onSend()}
               >
-                <p className="text-base px-3 py-1">Send to Server</p>
+                <p className="text-base px-4 py-2">Send to Server</p>
               </button>
             )}
           </div>
@@ -91,3 +91,5 @@ const EditImage = () => {
 };
 
 export default EditImage;
+
+//max-h-screen

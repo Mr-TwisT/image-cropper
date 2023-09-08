@@ -2,15 +2,9 @@ import { useRef, useEffect, useContext } from 'react';
 import { DataContext } from '@app/edit-image/page';
 
 const Upload = () => {
-  const inputRef = useRef(null);
-
   const { image, setImage } = useContext(DataContext);
 
-  const onUpload = () => {
-    if (inputRef.current) {
-      inputRef.current.click();
-    }
-  };
+  const inputRef = useRef(null);
 
   const onLoadImage = (e) => {
     const { files } = e.target;
@@ -29,20 +23,14 @@ const Upload = () => {
   }, [image]);
 
   return (
-    <div>
-      <button
-        type="button"
-        className="black_btn w-1/2 mx-auto"
-        onClick={onUpload}
-      >
-        <input
-          ref={inputRef}
-          type="file"
-          accept="image/*"
-          onChange={onLoadImage}
-          className="upload-file-input cursor-pointer ml-3"
-        />
-      </button>
+    <div className="flex items-center">
+      <input
+        ref={inputRef}
+        type="file"
+        accept="image/*"
+        onChange={onLoadImage}
+        className="upload-file-input black_btn cursor-pointer w-1/2 h-1/2 mx-auto"
+      />
     </div>
   );
 };
