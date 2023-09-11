@@ -1,12 +1,13 @@
-function determineBackgroundColor(imageSrc, callback) {
+const determineBackgroundColor = (imageSrc, callback) => {
   const img = new Image();
   img.src = imageSrc;
+
   img.onload = function () {
-    const canvas = document.createElement("canvas");
+    const canvas = document.createElement('canvas');
     canvas.width = img.width;
     canvas.height = img.height;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0, img.width, img.height);
 
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -25,6 +26,8 @@ function determineBackgroundColor(imageSrc, callback) {
 
     const avgLuminance = totalLuminance / (canvas.width * canvas.height);
 
-    callback(avgLuminance > 128 ? "black" : "white");
+    callback(avgLuminance > 128 ? 'black' : 'white');
   };
-}
+};
+
+export default determineBackgroundColor;
