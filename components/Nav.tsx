@@ -7,16 +7,16 @@ import { useState, useEffect } from 'react';
 const Nav = () => {
   const isUserLoggedIn = true;
 
-  // const [providers, setProviders] = useState(null);
+  const [providers, setProviders] = useState<any>(null);
 
-  // useEffect(() => {
-  //   const setMyProviders = async () => {
-  //     const response = await getProviders();
-  //     setProviders(response);
-  //   };
+  useEffect(() => {
+    const setMyProviders = async () => {
+      // const response = await getProviders();
+      // setProviders(response);
+    };
 
-  //   setMyProviders();
-  // }, []);
+    setMyProviders();
+  }, []);
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">

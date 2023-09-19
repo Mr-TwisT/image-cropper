@@ -1,19 +1,26 @@
 'use client';
 
-import { createContext, useRef, useState } from 'react';
-import { Cropper } from 'react-advanced-cropper';
+import React, { FC, createContext, useRef, useState } from 'react';
+import { Cropper, CropperRef } from 'react-advanced-cropper';
 import 'react-advanced-cropper/dist/style.css';
-import Upload from '@components/Upload';
+import Upload from '../../components/Upload';
 
-export const DataContext = createContext();
+interface ImageContext {
+  image: string;
+  setImage: React.Dispatch<React.SetStateAction<string>>;
+}
 
-const EditImage = () => {
-  const cropperRef = useRef(null);
+export const DataContext = createContext<ImageContext | null>(null);
 
-  const [isCropped, setIsCropped] = useState(false);
-  const [croppedImage1, setCroppedImage1] = useState(null);
-  const [croppedImage2, setCroppedImage2] = useState(null);
-  const [image, setImage] = useState('/assets/images/placeholder-image.jpg');
+const EditImage: FC = () => {
+  const cropperRef = useRef<CropperRef>(null);
+
+  const [isCropped, setIsCropped] = useState<boolean>(false);
+  const [croppedImage1, setCroppedImage1] = useState<HTMLCanvasElement>(null);
+  const [croppedImage2, setCroppedImage2] = useState<string>(null);
+  const [image, setImage] = useState<string>(
+    '/assets/images/placeholder-image.jpg'
+  );
 
   const onChange = () => {
     setIsCropped(false);
@@ -44,7 +51,7 @@ const EditImage = () => {
     }
 
     if (croppedImage2) {
-      // Konwersja DataURL na Blob
+      //Konwersja DataURL na Blob
       fetch(croppedImage2)
         .then((res) => res.blob())
         .then((blob) => {
@@ -59,12 +66,12 @@ const EditImage = () => {
           reader.onload = (e) => {
             const arrayBuffer = e.target.result;
 
-            // Utwórz Blob z ArrayBuffera
+            //Utwórz Blob z ArrayBuffera
             const restoredBlob = new Blob([arrayBuffer], {
               type: 'image/jpeg',
             });
 
-            // Utwórz URL obrazka z Bloba
+            //Utwórz URL obrazka z Bloba
             const restoredImageUrl = URL.createObjectURL(restoredBlob);
 
             window.open(restoredImageUrl);

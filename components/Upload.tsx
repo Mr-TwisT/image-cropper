@@ -1,11 +1,18 @@
-import { useRef, useEffect, useContext } from 'react';
-import { DataContext } from '@app/edit-image/page';
-import determineBackgroundColor from '@utils/determineBackgroundColor';
+import React, { useRef, useEffect, useContext } from 'react';
+import { DataContext } from '../app/edit-image/page';
+import determineBackgroundColor from '../utils/determineBackgroundColor';
 
-const Upload = () => {
-  const { image, setImage } = useContext(DataContext);
+interface ImageContext {
+  image: string;
+  setImage: React.Dispatch<React.SetStateAction<string>>;
+}
 
-  const inputRef = useRef(null);
+const Upload: React.FC = () => {
+  const { image, setImage } = useContext(
+    DataContext
+  ) as unknown as ImageContext;
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const onLoadImage = (e) => {
     const { files } = e.target;

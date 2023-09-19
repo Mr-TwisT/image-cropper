@@ -1,8 +1,11 @@
-const determineBackgroundColor = (imageSrc, callback) => {
+const determineBackgroundColor = (
+  imageSrc: string,
+  callback: (color: string) => void
+) => {
   const img = new Image();
   img.src = imageSrc;
 
-  img.onload = function () {
+  img.onload = () => {
     const canvas = document.createElement('canvas');
     canvas.width = img.width;
     canvas.height = img.height;
@@ -15,12 +18,12 @@ const determineBackgroundColor = (imageSrc, callback) => {
 
     let totalLuminance = 0;
 
-    // Dla każdego piksela oblicz jasność i dodaj do sumy
+    //Dla każdego piksela oblicz jasność i dodaj do sumy
     for (let i = 0; i < data.length; i += 4) {
       const r = data[i];
       const g = data[i + 1];
       const b = data[i + 2];
-      const luminance = 0.299 * r + 0.587 * g + 0.114 * b; // wzór na luminancję
+      const luminance = 0.299 * r + 0.587 * g + 0.114 * b; //wzór na luminancję
       totalLuminance += luminance;
     }
 
